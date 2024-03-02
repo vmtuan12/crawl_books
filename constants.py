@@ -1,0 +1,6 @@
+GOODREADS_LIST_BOOK_XPATH = "//*[@id='bodycontainer']//a[@class='bookTitle']/parent::*/parent::*//a[starts-with(@href, '/book/show/') and @title]"
+GOODREADS_TITLE_XPATH = "//h1"
+GOODREADS_AUTHOR_XPATH = "//a[@class='ContributorLink']/*[text()]"
+GOODREADS_DESCRIPTION_XPATH = "//*[@data-testid='description']//span"
+GOODREADS_EXPAND_GENRE_XPATH = "//*[@data-testid='genresList']//button"
+GOODREADS_GENRE_LIST_XPATH = "//*[@data-testid='genresList']//a[contains(@href, '/genres')]"
