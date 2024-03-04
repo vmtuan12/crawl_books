@@ -1,4 +1,9 @@
-GOODREADS_LIST_BOOK_XPATH = "//*[@id='bodycontainer']//a[@class='bookTitle']/parent::*/parent::*//a[starts-with(@href, '/book/show/') and @title]"
+GOODREADS_CATEGORIES_URL = "https://www.goodreads.com/genres/list"
+
+GOODREADS_LIST_CATE_XPATH = "//*[@id='bodycontainer']//*[@class='leftContainer']//div[@class='shelfStat']//a"
+GOODREADS_NEXT_PAGE_CATE_XPATH = "//a[@rel='next' and contains(text(), 'next')]"
+GOODREADS_LINK_TO_FULL_LIST_BOOK_XPATH = "//a[starts-with(@href, '/shelf/show') and contains(text(), 'More')]"
+GOODREADS_LIST_BOOK_XPATH = "//*[@id='bodycontainer']//a[@class='bookTitle']/parent::*/parent::*//a[starts-with(@href, '/book/show/') and @class='bookTitle']"
 GOODREADS_TITLE_XPATH = "//h1"
 GOODREADS_AUTHOR_XPATH = "//a[@class='ContributorLink']/*[text()]"
 GOODREADS_DESCRIPTION_XPATH = "//*[@data-testid='description']//span"
