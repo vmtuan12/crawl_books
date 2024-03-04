@@ -1,3 +1,4 @@
 my_cookie_*
 test.py
 *.pyc
+__pycache__/
