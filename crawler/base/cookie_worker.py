@@ -21,4 +21,4 @@ class CookieWorker:
 
         sleep(10)
 
-        pickle.dump(browser.get_cookies(), open("my_cookie_goodreads.pkl", "wb"))
+        pickle.dump(browser.get_cookies(), open("crawler/goodreads/my_cookie_goodreads.pkl", "wb"))
