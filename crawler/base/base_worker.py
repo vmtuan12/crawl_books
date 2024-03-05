@@ -16,7 +16,8 @@ class BaseWorker:
 
     def start_crawling(self):
         self.get_category_url_list()
-        self.traverse_categories()
+        for book in self.traverse_categories():
+            yield book
 
     def get_category_url_list(self):
         pass

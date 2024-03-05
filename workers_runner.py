@@ -6,4 +6,6 @@ goodreads_worker = GoodreadsWorker(target_browser=None)
 
 if __name__ == "__main__":
     cookie_worker.get_cookies()
-    goodreads_worker.start_crawling()
+    for book in goodreads_worker.start_crawling():
+        print(book)
+        print("------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------")
