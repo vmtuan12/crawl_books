@@ -11,9 +11,13 @@ class BookItem(BaseItem):
                  description: str, 
                  genres: list[str], 
                  author: list[str], 
-                 series: str | None):
+                 series: str | None, 
+                 related_people: dict | None,
+                 url: str):
         self.name = name
         self.description = description
         self.genres = genres
         self.author = author
         self.series = series
+        self.related_people = related_people
+        self.url = url

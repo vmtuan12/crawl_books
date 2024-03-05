@@ -16,7 +16,8 @@ class BaseWorker:
 
     def start_crawling(self):
         self.get_category_url_list()
-        self.traverse_categories()
+        for book in self.traverse_categories():
+            yield book
 
     def get_category_url_list(self):
         pass
@@ -33,16 +34,16 @@ class BaseWorker:
             self.browser.add_cookie(cookie)
 
     def redirect_and_sleep(self, url: str):
-        time.sleep(random.randint(5, 8))
+        time.sleep(random.randint(1, 2))
         self.browser.get(url)
-        time.sleep(random.randint(3, 5))
+        time.sleep(random.randint(1, 2))
 
     def redirect_before_sleep(self, url: str):
         self.browser.get(url)
-        time.sleep(random.randint(5, 8))
+        time.sleep(random.randint(1, 2))
 
     def redirect_after_sleep(self, url: str):
-        time.sleep(random.randint(5, 8))
+        time.sleep(random.randint(1, 2))
         self.browser.get(url)
 
     def redirect(self, url: str):
@@ -73,6 +74,9 @@ class BaseWorker:
         pass
 
     def _extract_series(self) -> str | None:
+        pass
+
+    def _extract_related_people(self) -> dict | None:
         pass
     
     def find_list_element_xpath(self, xpath: str) -> list[WebElement]:
