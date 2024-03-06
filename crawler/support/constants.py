@@ -13,3 +13,12 @@ GOODREADS_EXPAND_AUTHOR_BTN_XPATH = "//div[@class='ContributorLinksList']//butto
 GOODREADS_DESCRIPTION_XPATH = "//*[@data-testid='description']//span"
 GOODREADS_EXPAND_GENRE_BTN_XPATH = "//*[@data-testid='genresList']//button"
 GOODREADS_GENRE_LIST_XPATH = "//*[@data-testid='genresList']//a[contains(@href, '/genres')]"
+
+LIBRARYTHINGS_CATEGORIES_URL = "https://www.librarything.com/genre"
+LIBRARYTHINGS_LIST_CATE_XPATH = "//*[@id='classlist']/ul/li/a"
+LIBRARYTHINGS_NEXT_PAGE_CATE_XPATH = "//a[contains(text(), 'next')]"
+LIBRARYTHINGS_LINK_TO_FULL_LIST_BOOK_XPATH = "//a/span[contains(text(), 'Titles')]"
+LIBRARYTHINGS_LIST_BOOK_XPATH = "//a[@class='popup_registered']"
+
+
+
