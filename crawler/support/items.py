@@ -15,6 +15,7 @@ class BookItem(BaseItem):
                  related_people: dict | None,
                  language: str | None,
                  average_rating: float,
+                 rating_count: int,
                  num_page: int | None,
                  url: str):
         self.name = name
@@ -25,5 +26,6 @@ class BookItem(BaseItem):
         self.related_people = related_people
         self.language = language
         self.average_rating = average_rating
+        self.rating_count = rating_count
         self.num_page = num_page
         self.url = url

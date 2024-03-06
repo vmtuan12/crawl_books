@@ -85,6 +85,9 @@ class BaseWorker:
     def _extract_average_rating(self) -> float:
         pass
 
+    def _extract_rating_count(self) -> int:
+        pass
+
     def _extract_num_page(self) -> int | None:
         pass
     
