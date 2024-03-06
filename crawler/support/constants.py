@@ -13,3 +13,7 @@ GOODREADS_EXPAND_AUTHOR_BTN_XPATH = "//div[@class='ContributorLinksList']//butto
 GOODREADS_DESCRIPTION_XPATH = "//*[@data-testid='description']//span"
 GOODREADS_EXPAND_GENRE_BTN_XPATH = "//*[@data-testid='genresList']//button"
 GOODREADS_GENRE_LIST_XPATH = "//*[@data-testid='genresList']//a[contains(@href, '/genres')]"
+GOODREADS_BOOK_NUM_PAGE = "//*[@class='BookDetails']//*[@class='FeaturedDetails']/*[@data-testid='pagesFormat']"
+GOODREADS_BOOK_RATING = "//*[@class='RatingStatistics__rating']"
+GOODREADS_BOOK_RATING_COUNT = "//*[@class='BookPageMetadataSection__ratingStats']//*[@data-testid='ratingsCount']"
+GOODREADS_BOOK_LANGUAGE = "//*[@class='DescListItem']/child::*[text()='Language']/following-sibling::*"
