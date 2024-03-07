@@ -23,3 +23,10 @@ from pipeline import pipeline, topic
 kafka_connector = pipeline.KafkaConnector()
 kafka_connector.send(msg=) # msg is dict type
 ```
+
+To check data in Elasticsearch, go to localhost:5601 with username 'elastic', password 'changeme'<br>
+Go to Overview in Elastic on sidebar
+
+[![image.png](https://i.postimg.cc/QMkjnWzy/image.png)](https://postimg.cc/NyFhKLB6)
+
+Then go to Indices, scroll down to see the available indexes
