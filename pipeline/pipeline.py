@@ -11,7 +11,7 @@ class KafkaConnector:
     def close(self):
         self.producer.close()
 
-    def send(self, msg: dict, topic: topic):
+    def send(self, msg: dict, topic=topic.TOPIC_BOOK):
         # to do
         self.producer.send(topic, value=msg)
         self.producer.flush()
