@@ -31,8 +31,7 @@
     },
     {
       "names": [
-        "cosmetic",
-        "test-*"
+        "book-*"
       ],
       "privileges": [
         "write",
