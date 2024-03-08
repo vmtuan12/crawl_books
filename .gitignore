@@ -1,4 +1,5 @@
 my_cookie_*
 test.py
+../archive
 *.pyc
 __pycache__/
