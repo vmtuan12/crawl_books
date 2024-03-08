@@ -2,8 +2,11 @@ from selenium import webdriver
 from crawler.base.base_worker import BaseWorker
 from crawler.support import constants
 from crawler.support.items import BookItem
+import re
 
 class GoodreadsWorker(BaseWorker):
+
+    number_regex = r"\d+(,\d+)*"
 
     def __init__(self, target_browser: webdriver.Chrome | webdriver.Edge | webdriver.Firefox | webdriver.Safari | None):
         super().__init__(target_browser)
@@ -66,8 +69,13 @@ class GoodreadsWorker(BaseWorker):
         description = self._extract_description()
         genres = self._extract_genres()
         series = self._extract_series()
+        language = self._extract_language()
+        average_rating = self._extract_average_rating()
+        rating_count = self._extract_rating_count()
+        num_page = self._extract_num_page()
 
-        return BookItem(name=name, description=description, genres=genres, author=author, series=series, related_people=related_people, url=url_to_book)
+        return BookItem(name=name, description=description, genres=genres, author=author, series=series, related_people=related_people, 
+                        url=url_to_book, language=language, average_rating=average_rating, rating_count=rating_count, num_page=num_page)
 
     def _extract_name(self) -> str:
         name = self.find_element_xpath(constants.GOODREADS_TITLE_XPATH)
@@ -136,3 +144,40 @@ class GoodreadsWorker(BaseWorker):
         if series == None:
             return ""
         return series.text
+    
+    def _extract_language(self) -> str | None:
+        language_element = self.find_element_xpath(xpath=constants.GOODREADS_BOOK_LANGUAGE)
+        if language_element == None:
+            return None
+        
+        return language_element.get_attribute("innerText")
+
+    def _extract_average_rating(self) -> float:
+        avg_rating_element = self.find_element_xpath(xpath=constants.GOODREADS_BOOK_RATING)
+        if avg_rating_element == None:
+            return 0
+        
+        return float(avg_rating_element.text)
+
+    def _extract_rating_count(self) -> int:
+        rating_count_element = self.find_element_xpath(xpath=constants.GOODREADS_BOOK_RATING_COUNT)
+        if rating_count_element == None:
+            return 0
+        
+        rating_count = self._find_number_within_text(text=rating_count_element.text)
+        if rating_count == None:
+            return 0
+        
+        return rating_count
+
+    def _extract_num_page(self) -> int | None:
+        num_page_line = self.find_element_xpath(xpath=constants.GOODREADS_BOOK_NUM_PAGE)
+        if num_page_line == None:
+            return None
+        
+        text = num_page_line.text
+        return self._find_number_within_text(text=text)
+
+    def _find_number_within_text(self, text: str) -> int | None:
+        match = re.search(self.number_regex, text)
+        return int(match.group().replace(',', '')) if match != None else None

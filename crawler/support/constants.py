@@ -13,12 +13,28 @@ GOODREADS_EXPAND_AUTHOR_BTN_XPATH = "//div[@class='ContributorLinksList']//butto
 GOODREADS_DESCRIPTION_XPATH = "//*[@data-testid='description']//span"
 GOODREADS_EXPAND_GENRE_BTN_XPATH = "//*[@data-testid='genresList']//button"
 GOODREADS_GENRE_LIST_XPATH = "//*[@data-testid='genresList']//a[contains(@href, '/genres')]"
+GOODREADS_BOOK_NUM_PAGE = "//*[@class='BookDetails']//*[@class='FeaturedDetails']/*[@data-testid='pagesFormat']"
+GOODREADS_BOOK_RATING = "//*[@class='RatingStatistics__rating']"
+GOODREADS_BOOK_RATING_COUNT = "//*[@class='BookPageMetadataSection__ratingStats']//*[@data-testid='ratingsCount']"
+GOODREADS_BOOK_LANGUAGE = "//*[@class='DescListItem']/child::*[text()='Language']/following-sibling::*"
+
 
 LIBRARYTHINGS_CATEGORIES_URL = "https://www.librarything.com/genre"
 LIBRARYTHINGS_LIST_CATE_XPATH = "//*[@id='classlist']/ul/li/a"
 LIBRARYTHINGS_NEXT_PAGE_CATE_XPATH = "//a[contains(text(), 'next')]"
 LIBRARYTHINGS_LINK_TO_FULL_LIST_BOOK_XPATH = "//a/span[contains(text(), 'Titles')]"
 LIBRARYTHINGS_LIST_BOOK_XPATH = "//a[@class='popup_registered']"
-
-
-
+LIBRARYTHINGS_TITLE_XPATH = "//h1"
+LIBRARYTHINGS_SERIES_NAME_XPATH = "//div[@class='authorsandseries']/h3/a[contains(@href, 'nseries')]"
+LIBRARYTHINGS_SERIES_NUM_XPATH = "//div[@class='authorsandseries']/h3[b[contains(text(), 'Series')]]"
+LIBRARYTHINGS_AUTHOR_XPATH = "//div[@class='headsummary']/h2/a[contains(@href, 'author')][preceding-sibling::text()[normalize-space(.)='by']]"
+LIBRARYTHINGS_RELATED_PEOPLE_NAME_XPATH = "//table[@class='otherauthor']/tbody/tr[not(@class='head')][td[3][not(contains(., 'primary author'))]]/td[1]/a"
+LIBRARYTHINGS_RELATED_PEOPLE_POSITION_XPATH = "//table[@class='otherauthor']/tbody/tr[not(@class='head')][td[3][not(contains(., 'primary author'))]]/td[2]"
+LIBRARYTHINGS_DESCRIPTION_SHOW_MORE_SHOW_XPATH = "//td[@class='lastchild' and @colspan='7']/div[@class='showmore_show']"
+LIBRARYTHINGS_DESCRIPTION_SHOW_MORE_HIDE_XPATH = "//td[@class='lastchild' and @colspan='7']/div[@class='showmore_show']/u[@class='showmore_hide']"
+LIBRARYTHINGS_DESCRIPTION_SHOW_MORE_LINK_XPATH = "//td[@class='lastchild' and @colspan='7']/div[@class='showmore']/span/a"
+LIBRARYTHINGS_DESCRIPTION_XPATH = "//td[@class='lastchild' and @colspan='7']/div"
+LIBRARYTHINGS_GENRE_LIST_XPATH = "//div[@class='genreline']/div[@class='text']/a"
+LIBRARYTHINGS_BOOK_LANGUAGE = "//div[@class='fwikiItem divoriginallanguage']/div/div/a"
+LIBRARYTHINGS_BOOK_RATING = "//span[@class='dark_hint']"
+LIBRARYTHINGS_BOOK_RATING_COUNT = "//td[@class='gbr']"

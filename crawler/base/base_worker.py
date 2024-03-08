@@ -78,6 +78,18 @@ class BaseWorker:
 
     def _extract_related_people(self) -> dict | None:
         pass
+
+    def _extract_language(self) -> str | None:
+        pass
+
+    def _extract_average_rating(self) -> float:
+        pass
+
+    def _extract_rating_count(self) -> int:
+        pass
+
+    def _extract_num_page(self) -> int | None:
+        pass
     
     def find_list_element_xpath(self, xpath: str) -> list[WebElement]:
         return self.browser.find_elements(by=By.XPATH, value=xpath)
