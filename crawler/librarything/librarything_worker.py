@@ -160,7 +160,6 @@ class LibraryThingWorker(BaseWorker):
             text = rating_count_element.text.strip()
             if text:
                 number_within_text = int(text)
-                print(number_within_text)
                 rating_count += number_within_text
         return rating_count
 
