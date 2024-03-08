@@ -153,11 +153,14 @@ class LibraryThingWorker(BaseWorker):
         return float(avg_rating_element.text[1:len(avg_rating_element.text.strip()) - 1])
 
     def _extract_rating_count(self) -> int:
+        time.sleep(random.randint(2, 3))
         rating_count = 0
         rating_count_elements = self.find_list_element_xpath(constants.LIBRARYTHINGS_BOOK_RATING_COUNT)
         for rating_count_element in rating_count_elements:
-            number_within_text = self._find_number_within_text(text=rating_count_element.text.strip())
-            if number_within_text is not None:
+            text = rating_count_element.text.strip()
+            if text:
+                number_within_text = int(text)
+                print(number_within_text)
                 rating_count += number_within_text
         return rating_count
 
