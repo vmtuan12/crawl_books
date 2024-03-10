@@ -7,17 +7,19 @@ class BaseItem:
         return result
 
 class BookItem(BaseItem):
-    def __init__(self, name: str, 
+    def __init__(self, id: str,
+                 name: str, 
                  description: str, 
                  genres: list[str], 
                  author: list[str], 
                  series: str | None, 
-                 related_people: dict | None,
+                 related_people: list[str] | None,
                  language: str | None,
                  average_rating: float,
                  rating_count: int,
                  num_page: int | None,
                  url: str):
+        self.id = id
         self.name = name
         self.description = description
         self.genres = genres

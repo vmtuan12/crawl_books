@@ -76,7 +76,7 @@ class BaseWorker:
     def _extract_series(self) -> str | None:
         pass
 
-    def _extract_related_people(self) -> dict | None:
+    def _extract_related_people(self) -> list[str] | None:
         pass
 
     def _extract_language(self) -> str | None:
@@ -90,6 +90,31 @@ class BaseWorker:
 
     def _extract_num_page(self) -> int | None:
         pass
+
+    def _make_document_id(self, name: str, series: str | None) -> str:
+        result = ''
+
+        for char in name:
+            if 'A' <= char <= 'Z':
+                result += chr(ord(char) + 32)
+            elif char == ' ':
+                if result[len(result) - 1] != '-':
+                    result += '-'
+            else:
+                result += char
+
+        if series != None:
+            result += '-'
+            for char in series:
+                if 'A' <= char <= 'Z':
+                    result += chr(ord(char) + 32)
+                elif char == ' ':
+                    if result[len(result) - 1] != '-':
+                        result += '-'
+                else:
+                    result += char
+
+        return result
     
     def find_list_element_xpath(self, xpath: str) -> list[WebElement]:
         return self.browser.find_elements(by=By.XPATH, value=xpath)

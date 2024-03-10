@@ -1,4 +1,5 @@
 from selenium import webdriver
+from selenium.common.exceptions import WebDriverException
 from crawler.base.base_worker import BaseWorker
 from crawler.support import constants
 from crawler.support.items import BookItem
@@ -73,15 +74,16 @@ class GoodreadsWorker(BaseWorker):
         average_rating = self._extract_average_rating()
         rating_count = self._extract_rating_count()
         num_page = self._extract_num_page()
+        id = self._make_document_id(name=name, series=series)
 
-        return BookItem(name=name, description=description, genres=genres, author=author, series=series, related_people=related_people, 
+        return BookItem(name=name, description=description, genres=genres, author=author, series=series, related_people=related_people, id=id,
                         url=url_to_book, language=language, average_rating=average_rating, rating_count=rating_count, num_page=num_page)
 
     def _extract_name(self) -> str:
         name = self.find_element_xpath(constants.GOODREADS_TITLE_XPATH)
         if name == None:
             return ""
-        return name.text
+        return name.text.strip()
         
     def _extract_author(self) -> list[str]:
         expand_author_button = self.find_element_xpath(constants.GOODREADS_EXPAND_AUTHOR_BTN_XPATH)
@@ -96,14 +98,14 @@ class GoodreadsWorker(BaseWorker):
 
         return list(result)
     
-    def _extract_related_people(self) -> dict | None:
+    def _extract_related_people(self) -> list[str] | None:
         related_people_name = self.find_list_element_xpath(constants.GOODREADS_RELATED_PEOPLE_NAME_XPATH)
         if (len(related_people_name)) == 0:
             return None
         
         related_people_position = self.find_list_element_xpath(constants.GOODREADS_RELATED_PEOPLE_POSITION_XPATH)
 
-        result = {}
+        result = []
         for index in range(len(related_people_name)):
             person_name = related_people_name[index].text.strip()
             raw_person_position = related_people_position[index].text.strip()
@@ -117,7 +119,7 @@ class GoodreadsWorker(BaseWorker):
                 else:
                     person_position += char
             
-            result.update({person_name: person_position})
+            result.append(f'{person_name} --- {person_position}')
 
         return result
     
@@ -130,7 +132,10 @@ class GoodreadsWorker(BaseWorker):
     def _extract_genres(self) -> list[str]:
         expand_genre_button = self.find_element_xpath(constants.GOODREADS_EXPAND_GENRE_BTN_XPATH)
         if expand_genre_button != None:
-            expand_genre_button.click()
+            try:
+                expand_genre_button.click()
+            except WebDriverException:
+                pass
 
         genre_list = self.find_list_element_xpath(constants.GOODREADS_GENRE_LIST_XPATH)
         genres = []
@@ -143,9 +148,16 @@ class GoodreadsWorker(BaseWorker):
         series = self.find_element_xpath(constants.GOODREADS_SERIES_XPATH)
         if series == None:
             return ""
-        return series.text
+        return series.text.strip()
     
     def _extract_language(self) -> str | None:
+        btn_expand_edition = self.find_element_xpath(xpath=constants.GOODREADS_BOOK_BTN_EXPAND_EDITION)
+        if btn_expand_edition != None:
+            try:
+                btn_expand_edition.click()
+            except WebDriverException:
+                pass
+
         language_element = self.find_element_xpath(xpath=constants.GOODREADS_BOOK_LANGUAGE)
         if language_element == None:
             return None

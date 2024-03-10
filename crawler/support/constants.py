@@ -16,4 +16,5 @@ GOODREADS_GENRE_LIST_XPATH = "//*[@data-testid='genresList']//a[contains(@href, 
 GOODREADS_BOOK_NUM_PAGE = "//*[@class='BookDetails']//*[@class='FeaturedDetails']/*[@data-testid='pagesFormat']"
 GOODREADS_BOOK_RATING = "//*[@class='RatingStatistics__rating']"
 GOODREADS_BOOK_RATING_COUNT = "//*[@class='BookPageMetadataSection__ratingStats']//*[@data-testid='ratingsCount']"
+GOODREADS_BOOK_BTN_EXPAND_EDITION = "//*[@class='BookDetails']//div[@class='Button__container']/button"
 GOODREADS_BOOK_LANGUAGE = "//*[@class='DescListItem']/child::*[text()='Language']/following-sibling::*"
