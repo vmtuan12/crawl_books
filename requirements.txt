@@ -1,2 +1,5 @@
 selenium
-kafka
+python-dotenv
+kafka-python
+elasticsearch
+elasticsearch[async]
