@@ -1,3 +1,5 @@
+## Installation
+
 Firstly, run the following command to initialize accounts and roles for Elasticsearch
 
 ```
@@ -9,6 +11,16 @@ Then run the following command to build containers
 ```
 docker-compose up -d
 ```
+
+> **_IMPORTANT_**
+
+For the first installation, use this Curl to change the license from <i>Trial</i> to <i>Basic</i>
+
+```
+curl -X POST "localhost:9200/_license/start_basic?acknowledge=true&pretty"
+```
+
+## How to use
 
 Command to create a Kafka topic (Or go to localhost:9000 to use Kafdrop), here the default topic is 'book'
 
