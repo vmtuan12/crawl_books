@@ -4,3 +4,4 @@ test.py
 *.pyc
 __pycache__/
 raw_data/
+dataset/
