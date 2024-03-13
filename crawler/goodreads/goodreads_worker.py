@@ -32,14 +32,14 @@ class GoodreadsWorker(BaseWorker):
 
     def traverse_categories(self):
         for url in self.book_category_url_list:
-            self.redirect_after_sleep(url)
+            self.redirect(url)
 
             link_to_full_list = self.find_element_xpath(xpath=constants.GOODREADS_LINK_TO_FULL_LIST_BOOK_XPATH)
             if link_to_full_list == None:
                 continue
 
             url = link_to_full_list.get_attribute("href")
-            self.redirect_after_sleep(url)
+            self.redirect(url)
             for book in self.traverse_category_books():
                 yield book
 
@@ -60,10 +60,10 @@ class GoodreadsWorker(BaseWorker):
             if next_page_url == None:
                 break
 
-            self.redirect_after_sleep(next_page_url)
+            self.redirect(next_page_url)
 
     def extract_book_info(self, url_to_book: str) -> BookItem:
-        self.redirect_and_sleep(url=url_to_book)
+        self.redirect(url=url_to_book)
         name = self._extract_name()
         author = self._extract_author()
         related_people = self._extract_related_people()
