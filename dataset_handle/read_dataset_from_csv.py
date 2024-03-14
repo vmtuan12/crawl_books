@@ -2,8 +2,9 @@ import pandas as pd
 import numpy as np
 import os
 
+
 def read_csv_from_dataset0():
-    #Replace with your path to dataset folder
+    # Replace with your path to dataset folder
     path = "../../data/dataset0"
     count = 0
     for file in os.listdir(path):
@@ -24,7 +25,8 @@ def read_csv_from_dataset0():
             data.drop('RatingDist1', inplace=True, axis=1)
             if 'Count of text reviews' in data.columns:
                 data.drop('Count of text reviews', inplace=True, axis=1)
-            data.rename(columns= {'Name': 'Title', 'pagesNumber': 'Pages', 'CountsOfReview': 'ReviewCounts', 'PagesNumber': 'Pages'}, inplace= True)
+            data.rename(columns={'Name': 'Title', 'pagesNumber': 'Pages', 'CountsOfReview': 'ReviewCounts',
+                                 'PagesNumber': 'Pages'}, inplace=True)
             data['Genres'] = np.nan
             data['isBestSeller'] = np.nan
             data['isEditorsPick'] = np.nan
@@ -32,9 +34,11 @@ def read_csv_from_dataset0():
             print(data.columns)
             if 'Description' not in data.columns:
                 data['Description'] = np.nan
-            data = data[['Title', 'Authors', 'Description', 'Pages', 'PublishYear', 'Language', 'Rating', 'Genres', 'ReviewCounts', 'isBestSeller', 'isEditorsPick', 'isGoodReadsChoice']]
+            data = data[['Title', 'Authors', 'Description', 'Pages', 'PublishYear', 'Language', 'Rating', 'Genres',
+                         'ReviewCounts', 'isBestSeller', 'isEditorsPick', 'isGoodReadsChoice']]
             data.to_csv("dataset/dataset0_" + str(count) + ".csv")
             count += 1
+
 
 def read_csv_from_dataset1():
     # Replace with your path to dataset folder
@@ -50,16 +54,20 @@ def read_csv_from_dataset1():
             data.drop('isbn13', inplace=True, axis=1)
             data.drop('text_reviews_count', inplace=True, axis=1)
             data.drop('publisher', inplace=True, axis=1)
-            data.rename(columns= {'title': 'Title', '  num_pages': 'Pages', 'ratings_count': 'ReviewCounts', 'authors': 'Authors', 'language_code': "Language", 'average_rating': 'Rating', 'publication_date': 'PublishYear'}, inplace= True)
+            data.rename(columns={'title': 'Title', '  num_pages': 'Pages', 'ratings_count': 'ReviewCounts',
+                                 'authors': 'Authors', 'language_code': "Language", 'average_rating': 'Rating',
+                                 'publication_date': 'PublishYear'}, inplace=True)
             data['Description'] = np.nan
             data['Genres'] = np.nan
             data['isBestSeller'] = np.nan
             data['isEditorsPick'] = np.nan
             data['isGoodReadsChoice'] = np.nan
-            data = data[['Title', 'Authors', 'Description', 'Pages', 'PublishYear', 'Language', 'Rating', 'Genres', 'ReviewCounts', 'isBestSeller', 'isEditorsPick', 'isGoodReadsChoice']]
+            data = data[['Title', 'Authors', 'Description', 'Pages', 'PublishYear', 'Language', 'Rating', 'Genres',
+                         'ReviewCounts', 'isBestSeller', 'isEditorsPick', 'isGoodReadsChoice']]
             print(data.columns)
             data.to_csv("dataset/dataset1_" + str(count) + ".csv")
             count += 1
+
 
 def read_csv_from_dataset2():
     # Replace with your path to dataset folder
@@ -75,16 +83,21 @@ def read_csv_from_dataset2():
             data.drop('book_format', inplace=True, axis=1)
             data.drop('book_review_count', inplace=True, axis=1)
             data.drop('image_url', inplace=True, axis=1)
-            data.rename(columns= {'book_title': 'Title', 'book_pages': 'Pages', 'book_rating_count': 'ReviewCounts', 'book_authors': 'Authors', 'language_code': "Language", 'book_rating': 'Rating', 'publication_date': 'PublishYear', 'book_desc': 'Description', 'genres': 'Genres'}, inplace= True)
+            data.rename(columns={'book_title': 'Title', 'book_pages': 'Pages', 'book_rating_count': 'ReviewCounts',
+                                 'book_authors': 'Authors', 'language_code': "Language", 'book_rating': 'Rating',
+                                 'publication_date': 'PublishYear', 'book_desc': 'Description', 'genres': 'Genres'},
+                        inplace=True)
             data['PublishYear'] = np.nan
             data['Language'] = np.nan
             data['isBestSeller'] = np.nan
             data['isEditorsPick'] = np.nan
             data['isGoodReadsChoice'] = np.nan
-            data = data[['Title', 'Authors', 'Description', 'Pages', 'PublishYear', 'Language', 'Rating', 'Genres', 'ReviewCounts', 'isBestSeller', 'isEditorsPick', 'isGoodReadsChoice']]
+            data = data[['Title', 'Authors', 'Description', 'Pages', 'PublishYear', 'Language', 'Rating', 'Genres',
+                         'ReviewCounts', 'isBestSeller', 'isEditorsPick', 'isGoodReadsChoice']]
             print(data.columns)
             data.to_csv("dataset/dataset2_" + str(count) + ".csv")
             count += 1
+
 
 def read_csv_from_dataset3():
     # Replace with your path to dataset folder
@@ -99,7 +112,10 @@ def read_csv_from_dataset3():
             data.drop('previewLink', inplace=True, axis=1)
             data.drop('publisher', inplace=True, axis=1)
             data.drop('infoLink', inplace=True, axis=1)
-            data.rename(columns= {'book_title': 'Title', 'book_pages': 'Pages', 'ratingsCount': 'ReviewCounts', 'authors': 'Authors', 'language_code': "Language", 'book_rating': 'Rating', 'publishedDate': 'PublishYear', 'description': 'Description', 'categories': 'Genres'}, inplace= True)
+            data.rename(columns={'book_title': 'Title', 'book_pages': 'Pages', 'ratingsCount': 'ReviewCounts',
+                                 'authors': 'Authors', 'language_code': "Language", 'book_rating': 'Rating',
+                                 'publishedDate': 'PublishYear', 'description': 'Description', 'categories': 'Genres'},
+                        inplace=True)
             data['Pages'] = np.nan
             data['Rating'] = np.nan
             data['Language'] = np.nan
@@ -107,10 +123,12 @@ def read_csv_from_dataset3():
             data['isEditorsPick'] = np.nan
             data['isGoodReadsChoice'] = np.nan
             data['ReviewCounts'] = np.nan
-            data = data[['Title', 'Authors', 'Description', 'Pages', 'PublishYear', 'Language', 'Rating', 'Genres', 'ReviewCounts', 'isBestSeller', 'isEditorsPick', 'isGoodReadsChoice']]
+            data = data[['Title', 'Authors', 'Description', 'Pages', 'PublishYear', 'Language', 'Rating', 'Genres',
+                         'ReviewCounts', 'isBestSeller', 'isEditorsPick', 'isGoodReadsChoice']]
             print(data.columns)
             data.to_csv("dataset/dataset3_" + str(count) + ".csv")
             count += 1
+
 
 def read_csv_from_dataset4():
     # Replace with your path to dataset folder
@@ -129,25 +147,184 @@ def read_csv_from_dataset4():
             data.drop('isKindleUnlimited', inplace=True, axis=1)
             data.drop('category_id', inplace=True, axis=1)
             data.drop('reviews', inplace=True, axis=1)
-            data.rename(columns= {'title': 'Title', 'book_pages': 'Pages', 'ratingsCount': 'ReviewCounts', 'author': 'Authors', 'language_code': "Language", 'stars': 'Rating', 'publishedDate': 'PublishYear', 'description': 'Description', 'category_name': 'Genres'}, inplace= True)
+            data.rename(
+                columns={'title': 'Title', 'book_pages': 'Pages', 'ratingsCount': 'ReviewCounts', 'author': 'Authors',
+                         'language_code': "Language", 'stars': 'Rating', 'publishedDate': 'PublishYear',
+                         'description': 'Description', 'category_name': 'Genres'}, inplace=True)
             data['Pages'] = np.nan
             data['Rating'] = np.nan
             data['Language'] = np.nan
             data['ReviewCounts'] = np.nan
             data['Description'] = np.nan
-            data = data[['Title', 'Authors', 'Description', 'Pages', 'PublishYear', 'Language', 'Rating', 'Genres', 'ReviewCounts', 'isBestSeller', 'isEditorsPick', 'isGoodReadsChoice']]
+            data = data[['Title', 'Authors', 'Description', 'Pages', 'PublishYear', 'Language', 'Rating', 'Genres',
+                         'ReviewCounts', 'isBestSeller', 'isEditorsPick', 'isGoodReadsChoice']]
             print(data.columns)
             data.to_csv("dataset/dataset4_" + str(count) + ".csv")
             count += 1
 
-read_csv_from_dataset0()
-read_csv_from_dataset1()
-read_csv_from_dataset2()
-read_csv_from_dataset3()
-read_csv_from_dataset4()
+
+# read_csv_from_dataset0()
+# read_csv_from_dataset1()
+# read_csv_from_dataset2()
+# read_csv_from_dataset3()
+# read_csv_from_dataset4()
+
+def read_csv_from_dataset5():
+    # Replace with your path to dataset folder
+    path = "../../data/dataset5"
+    count = 0
+    for file in os.listdir(path):
+        file_name, file_extension = os.path.splitext(file)
+        if file_extension == ".csv":
+            print("Read csv file:", path + "/" + file, "\n")
+            data = pd.read_csv(path + "/" + file)
+            data = data[['Title', 'genres']]
+            # data.drop('Book Id', inplace=True, axis=1)
+            # data.drop('isbn', inplace=True, axis=1)
+            # data.drop('isbn13', inplace=True, axis=1)
+            # data.drop('text_reviews_count', inplace=True, axis=1)
+            # data.drop('publisher', inplace=True, axis=1)
+            data.rename(columns={'Title': 'Title', 'genres': 'Genres'}, inplace=True)
+            data['Pages'] = np.nan
+            data['Authors'] = np.nan
+            data['Rating'] = np.nan
+            data['Language'] = np.nan
+            data['ReviewCounts'] = np.nan
+            data['Description'] = np.nan
+            data['PublishYear'] = np.nan
+            data['isBestSeller'] = np.nan
+            data['isEditorsPick'] = np.nan
+            data['isGoodReadsChoice'] = np.nan
+            data = data[['Title', 'Authors', 'Description', 'Pages', 'PublishYear', 'Language', 'Rating', 'Genres',
+                         'ReviewCounts', 'isBestSeller', 'isEditorsPick', 'isGoodReadsChoice']]
+            print(data)
+            data.to_csv("dataset/dataset5_" + str(count) + ".csv")
+            count += 1
 
 
-# data = pd.read_csv('../../data/dataset4/kindle_data-v2.csv')
+def read_csv_from_dataset6():
+    # Replace with your path to dataset folder
+    path = "../../data/dataset6"
+    count = 0
+    for file in os.listdir(path):
+        file_name, file_extension = os.path.splitext(file)
+        if file_extension == ".csv":
+            print("Read csv file:", path + "/" + file, "\n")
+            data = pd.read_csv(path + "/" + file)
+            data = data[['Book', 'Genres']]
+            # data.drop('Unnamed: 0', inplace=True, axis=1)
+            # data.drop('Author', inplace=True, axis=1)
+            # data.drop('Description', inplace=True, axis=1)
+            # data.drop('Avg_Rating', inplace=True, axis=1)
+            # data.drop('Num_Ratings', inplace=True, axis=1)
+            # data.drop('URL', inplace=True, axis=1)
+            data.rename(columns={'Book': 'Title', 'Genres': 'Genres'}, inplace=True)
+            data['Pages'] = np.nan
+            data['Authors'] = np.nan
+            data['Rating'] = np.nan
+            data['Language'] = np.nan
+            data['ReviewCounts'] = np.nan
+            data['Description'] = np.nan
+            data['PublishYear'] = np.nan
+            data['isBestSeller'] = np.nan
+            data['isEditorsPick'] = np.nan
+            data['isGoodReadsChoice'] = np.nan
+            data = data[['Title', 'Authors', 'Description', 'Pages', 'PublishYear', 'Language', 'Rating', 'Genres',
+                         'ReviewCounts', 'isBestSeller', 'isEditorsPick', 'isGoodReadsChoice']]
+            print(data)
+            data.to_csv("dataset/dataset6_" + str(count) + ".csv")
+            count += 1
+
+
+def read_csv_from_dataset7():
+    # Replace with your path to dataset folder
+    path = "../../data/dataset7"
+    count = 0
+    for file in os.listdir(path):
+        file_name, file_extension = os.path.splitext(file)
+        if file_extension == ".csv":
+            print("Read csv file:", path + "/" + file, "\n")
+            data = pd.read_csv(path + "/" + file)
+            data = data[['Book_Title', 'Genres']]
+            data.rename(columns={'Book_Title': 'Title', 'genres': 'Genres'}, inplace=True)
+            data['Pages'] = np.nan
+            data['Authors'] = np.nan
+            data['Rating'] = np.nan
+            data['Language'] = np.nan
+            data['ReviewCounts'] = np.nan
+            data['Description'] = np.nan
+            data['PublishYear'] = np.nan
+            data['isBestSeller'] = np.nan
+            data['isEditorsPick'] = np.nan
+            data['isGoodReadsChoice'] = np.nan
+            data = data[['Title', 'Authors', 'Description', 'Pages', 'PublishYear', 'Language', 'Rating', 'Genres',
+                         'ReviewCounts', 'isBestSeller', 'isEditorsPick', 'isGoodReadsChoice']]
+            print(data)
+            data.to_csv("dataset/dataset7_" + str(count) + ".csv")
+            count += 1
+
+
+def read_csv_from_dataset8():
+    # Replace with your path to dataset folder
+    path = "../../data/dataset8"
+    count = 0
+    for file in os.listdir(path):
+        file_name, file_extension = os.path.splitext(file)
+        if file_extension == ".csv":
+            print("Read csv file:", path + "/" + file, "\n")
+            data = pd.read_csv(path + "/" + file)
+            data = data[['title', 'genre']]
+            data.rename(columns={'title': 'Title', 'genre': 'Genres'}, inplace=True)
+            data['Pages'] = np.nan
+            data['Authors'] = np.nan
+            data['Rating'] = np.nan
+            data['Language'] = np.nan
+            data['ReviewCounts'] = np.nan
+            data['Description'] = np.nan
+            data['PublishYear'] = np.nan
+            data['isBestSeller'] = np.nan
+            data['isEditorsPick'] = np.nan
+            data['isGoodReadsChoice'] = np.nan
+            data = data[['Title', 'Authors', 'Description', 'Pages', 'PublishYear', 'Language', 'Rating', 'Genres',
+                         'ReviewCounts', 'isBestSeller', 'isEditorsPick', 'isGoodReadsChoice']]
+            print(data.columns)
+            data.to_csv("dataset/dataset8_" + str(count) + ".csv")
+            count += 1
+
+def read_csv_from_dataset9():
+    # Replace with your path to dataset folder
+    path = "../../data/dataset9"
+    count = 0
+    for file in os.listdir(path):
+        file_name, file_extension = os.path.splitext(file)
+        if file_extension == ".csv":
+            print("Read csv file:", path + "/" + file, "\n")
+            data = pd.read_csv(path + "/" + file)
+            data = data[['title', 'genres']]
+            data.rename(columns={'title': 'Title', 'genres': 'Genres'}, inplace=True)
+            data['Pages'] = np.nan
+            data['Authors'] = np.nan
+            data['Rating'] = np.nan
+            data['Language'] = np.nan
+            data['ReviewCounts'] = np.nan
+            data['Description'] = np.nan
+            data['PublishYear'] = np.nan
+            data['isBestSeller'] = np.nan
+            data['isEditorsPick'] = np.nan
+            data['isGoodReadsChoice'] = np.nan
+            data = data[['Title', 'Authors', 'Description', 'Pages', 'PublishYear', 'Language', 'Rating', 'Genres',
+                         'ReviewCounts', 'isBestSeller', 'isEditorsPick', 'isGoodReadsChoice']]
+            print(data.columns)
+            data.to_csv("dataset/dataset9_" + str(count) + ".csv")
+            count += 1
+
+read_csv_from_dataset5()
+read_csv_from_dataset6()
+read_csv_from_dataset7()
+read_csv_from_dataset8()
+read_csv_from_dataset9()
+
+# data = pd.read_csv('../../data/dataset6/goodreads_data.csv')
 #
 # print("Original 'input.csv' CSV Data: \n")
 # print(data.columns)
